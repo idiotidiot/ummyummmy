@@ -39,10 +39,11 @@ window.addEventListener("load", () => {
     var m = date.getMinutes() // 0 - 59
     var s = date.getSeconds() // 0 - 59
     var session = "AM"
+    h = h == 12 ? 24 : h; 
+
     if (h == 0) {
       h = 12
-    }
-    if (h > 12) {
+    } else if (h >= 12) {
       h = h - 12
       session = "PM"
     }
@@ -742,7 +743,7 @@ function handleTabLeave() {
         document.getElementsByTagName("head")[0].appendChild(link)
       }
       link.href =
-        "https://static.nebulacdn.xyz/content/images/nebula_logo_619x619.png"
+        "https://camo.githubusercontent.com/b565ae2e136e0ac6023e7099288a62382de7c2b8cdce86a8b90449b86649434c/68747470733a2f2f6e6562756c6170726f78792e6e6562756c612e62696f2f696d616765732f6c6f676f2e706e67"
     } else {
       return false
     }
@@ -776,9 +777,9 @@ function link(_link) {
           img.href =
             "https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png"
           doc.title = getRandomName()
-          var currentLink = link.slice(0, link.length - 1)
+          var currentLink = _link.slice(0, _link.length - 1)
           iframe.src =
-            currentLink + "/service/go/" + __uv$config.encodeUrl(_link)
+            location.origin + "/service/go/" + __uv$config.encodeUrl(currentLink)
           style.position = "fixed"
           style.top = style.bottom = style.left = style.right = 0
           style.border = style.outline = "none"
